@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FinalProjectAndroid</string>
+    <string name="name">name</string>
+    <string name="argument_1">argument 1</string>
+    <string name="argument_2">argument 2</string>
+    <string name="add">ADD</string>
+    <string name="display_text">DISPLAY</string>
+    <string name="clear_text">CLEAR</string>
+    <string name="none">none</string>
+    <string name="delete_icon">delete_icon</string>
+</resources>
