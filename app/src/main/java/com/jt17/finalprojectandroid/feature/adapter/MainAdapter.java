@@ -23,7 +23,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     @SuppressLint("NotifyDataSetChanged")
     public void setData(List<ItemsModel> list) {
-        itemsList.addAll(list);
+        itemsList = list;
         notifyDataSetChanged();
     }
 
@@ -43,16 +43,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         ItemsModel item = itemsList.get(position);
 
+        holder.itemBinding.getRoot().setOnClickListener(view -> listener.onItemClick(item.getName(), item.getSum()));
+
         holder.itemBinding.idText.setText(String.valueOf(item.getId()));
         holder.itemBinding.nameText.setText(item.getName());
         holder.itemBinding.sumText.setText(item.getSum());
 
-        holder.itemBinding.deleteItemButton.setOnClickListener(view -> {
-//            itemsList.remove(position);
-//            notifyItemRemoved(position);
-            itemsList.clear();
-            listener.onDeleteClick(item.getId());
-        });
+        holder.itemBinding.deleteItemButton.setOnClickListener(view -> listener.onDeleteClick(item.getId()));
     }
 
     @Override

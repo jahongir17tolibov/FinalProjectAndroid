@@ -69,6 +69,11 @@ public class DisplayDataActivity extends AppCompatActivity implements OnItemClic
     }
 
     @Override
+    public void onItemClick(String name, String sum) {
+        showToast("name: " + name + "\n" + "sum: " + sum);
+    }
+
+    @Override
     public void onDeleteClick(int id) {
         viewModel.deleteItem(id)
                 .andThen(Completable.fromRunnable(() -> showToast("Deleted!")))

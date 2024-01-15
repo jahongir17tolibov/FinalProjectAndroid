@@ -30,11 +30,11 @@ public class MainViewModel extends AndroidViewModel {
         return repository.insertData(name, sum);
     }
 
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
-
     public Completable clearAll() {
         return repository.clearAllItems();
     }
+
+    CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     public void onStopCountingAndShowNotification() {
         ActivityStopCounterManager.incrementMainStop();

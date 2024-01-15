@@ -1,5 +1,6 @@
 package com.jt17.finalprojectandroid.feature.main;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -148,26 +149,28 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+
     private void getNotificationPermission() {
         if (ContextCompat.checkSelfPermission(
-                this, android.Manifest.permission.POST_NOTIFICATIONS
+                this, Manifest.permission.POST_NOTIFICATIONS
         ) != PackageManager.PERMISSION_GRANTED) {
 
             // check if the user has previously denied the permission
             if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this, android.Manifest.permission.POST_NOTIFICATIONS
+                    this, Manifest.permission.POST_NOTIFICATIONS
             )) {
                 // Show an explanation to the user
                 // You can customize the message or UI based on your requirements
             }
 
             // Request the permission
-            ActivityCompat.requestPermissions(
-                    this,
-                    new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
-                    1001
-            );
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        1001
+                );
+            }
         }
     }
 

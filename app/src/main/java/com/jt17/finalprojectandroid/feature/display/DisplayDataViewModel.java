@@ -2,7 +2,6 @@ package com.jt17.finalprojectandroid.feature.display;
 
 import android.app.Application;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,7 +17,6 @@ import com.jt17.finalprojectandroid.manager.MyNotificationManager;
 
 import java.util.List;
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -49,12 +47,7 @@ public class DisplayDataViewModel extends AndroidViewModel {
     public void onStopCountingAndShowNotification() {
         ActivityStopCounterManager.incrementDisplayStop();
         final Disposable disposable = ActivityStopCounterManager.countingOnStop()
-                .subscribe(value -> {
-                            Log.d("jt1771tj", "DisplayViewModel: disposable " + value);
-                            myNotificationManager.updateNotification(value);
-                        },
-                        throwable -> Log.e("jt1771tj", "Error in countingOnStop", throwable)
-                );
+                .subscribe(myNotificationManager::updateNotification);
 
         compositeDisposable.add(disposable);
     }

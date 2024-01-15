@@ -38,7 +38,7 @@ android {
 
 dependencies {
     val room_version = "2.6.1"
-    val lifecycle_version = "2.6.2"
+    val lifecycle_version = "2.7.0"
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

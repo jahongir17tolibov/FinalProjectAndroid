@@ -20,10 +20,10 @@ public interface MainDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertData(MyEntity data);
 
-    @Query("DELETE FROM my_task_entity WHERE id = :entityId")
-    void deleteData(int entityId);
-
     @Query("DELETE FROM my_task_entity")
     void clearAllData();
+
+    @Query("DELETE FROM my_task_entity WHERE id = :entityId")
+    void deleteData(int entityId);
 
 }
